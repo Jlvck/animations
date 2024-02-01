@@ -69,25 +69,11 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
                 onPressed: () => change(),
               ),
               const SizedBox(
-                height: 10,
+                height: 30,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Border Radius"),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  TweenAnimationBuilder(
-                    tween: IntTween(
-                      begin: 0,
-                      end: borderRadius.toInt(),
-                    ),
-                    duration: _duration,
-                    builder: (context, value, child) => Text("$value"),
-                  )
-                ],
-              )
+              Values(title: "Border Radius", value: borderRadius),
+              Values(title: "Margin", value: margin),
+              Values(title: "Color", value: color.toString())
             ],
           ),
         ),
@@ -101,5 +87,45 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
       margin = randomMargin();
       borderRadius = randomBorderRadius();
     });
+  }
+}
+
+class Values extends StatelessWidget {
+  const Values({
+    super.key,
+    required this.title,
+    required this.value,
+  });
+
+  final dynamic value;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(title),
+          const SizedBox(
+            width: 10,
+          ),
+          title == "Color"
+              ? Text(value.toString().toUpperCase())
+              : SizedBox(
+                  width: 20,
+                  child: TweenAnimationBuilder(
+                    tween: IntTween(
+                      begin: 0,
+                      end: value.toInt(),
+                    ),
+                    duration: _duration,
+                    builder: (context, value, child) => Text("$value"),
+                  ),
+                )
+        ],
+      ),
+    );
   }
 }
