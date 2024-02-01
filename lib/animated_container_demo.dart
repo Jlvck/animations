@@ -47,26 +47,49 @@ class _AnimatedContainerDemoState extends State<AnimatedContainerDemo> {
         title: const Text("Animated Container Demo"),
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              width: 128,
-              height: 128,
-              child: AnimatedContainer(
-                margin: EdgeInsets.all(margin),
-                curve: Curves.easeInOutBack,
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(borderRadius),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                width: 128,
+                height: 128,
+                child: AnimatedContainer(
+                  margin: EdgeInsets.all(margin),
+                  curve: Curves.easeInOutBack,
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  ),
+                  duration: _duration,
                 ),
-                duration: _duration,
               ),
-            ),
-            ElevatedButton(
-              child: const Text('Change'),
-              onPressed: () => change(),
-            ),
-          ],
+              ElevatedButton(
+                child: const Text('Change'),
+                onPressed: () => change(),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Border Radius"),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  TweenAnimationBuilder(
+                    tween: IntTween(
+                      begin: 0,
+                      end: borderRadius.toInt(),
+                    ),
+                    duration: _duration,
+                    builder: (context, value, child) => Text("$value"),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
