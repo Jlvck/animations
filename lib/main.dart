@@ -1,4 +1,6 @@
-import 'package:animations/animated_container_demo.dart';
+// import 'package:animations/animated_container_demo.dart';
+// import 'package:animations/tutorial/logo_app_builder.dart';
+import 'package:animations/tutorial/logo_app.dart';
 // import 'package:animations/fade_in_demo.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -37,6 +40,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const AnimatedContainerDemo();
+    return const LogoApp();
   }
 }
