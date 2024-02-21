@@ -1,6 +1,7 @@
 // import 'package:animations/animated_container_demo.dart';
 // import 'package:animations/tutorial/logo_app_builder.dart';
-import 'package:animations/tutorial/logo_app.dart';
+import 'package:animations/learning/opacity_animation.dart';
+// import 'package:animations/tutorial/logo_app.dart';
 // import 'package:animations/fade_in_demo.dart';
 import 'package:flutter/material.dart';
 
@@ -40,6 +41,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const LogoApp();
+    return const OpacityAnimation();
   }
 }
